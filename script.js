@@ -1,10 +1,17 @@
 let boxTop = 545;
 let boxLeft = 50;
 
-function mover(){
-  let box = document.getElementById("box");
-  let wall = document.getElementById("wall");
-  let seta = event.keyCode;
+
+
+
+
+
+function mover(){   
+
+    let box = document.getElementById("box");
+    let wall = document.getElementById("wall");
+  
+    let seta = event.keyCode;
 
 
   //keyCode: Valores para as teclas: "ArrowDown" - 40 - (seta para baixo = (+10)); "ArrowLeft" - 37 - (seta para esq = (-10)); "ArrowRight"  - 39 -(seta para dir  = (+10)); "ArrowUp" - 38 (seta para cima = (-10));
@@ -22,11 +29,13 @@ function mover(){
                 boxTop += 10;
                 box.style.top = boxTop + "px";
             }
-            console.log(detectarColisao("box", "wall")==true) //? console.log("colidiu") : console.log("ainda não colidiu");   
+            console.log(detectarColisao("box", "wall")) //? console.log("colidiu") : console.log("ainda não colidiu");        
 
 }
 
-function detectarColisao(idWall, idBox) {
+document.addEventListener('keydown', mover);
+
+function detectarColisao(idBox, idWall) {
     let box1 = document.getElementById(idBox).getBoundingClientRect();
     let wall1 = document.getElementById(idWall).getBoundingClientRect();
     
@@ -43,11 +52,9 @@ function detectarColisao(idWall, idBox) {
     let colidiu = false;
 
     while ((colidiu == false) && (indice < 3)){
-        ((pontos_box1[indice].x >= wall1.left) && (pontos_box1[indice].x <= wall1.left + wall1.width) && (pontos_box1[indice].y >= wall1.top) && (pontos_box1[indice].y <= wall1.top + wall1.height) || 
-        (pontos_wall1[indice].x >= box1.left) && (pontos_wall1[indice].x <= box1.left + box1.width) && (pontos_wall1[indice].y >= box1.top) && (pontos_wall1[indice].y <= box1.top + box1.height))? colidiu = true : indice++;
+        ((pontos_box1[indice].x >= wall1.left) && (pontos_box1[indice].x <= wall1.left + wall1.width) && (pontos_box1[indice].y >= wall1.top) && (pontos_box1[i].y <= wall1.top + wall1.height) || 
+        (pontos_wall1[indice].x >= box1.left) && (pontos_wall1[indice].x <= box1.left + box1.width) && (pontos_wall1[indice].y >= box1.top) && (pontos_wall1[indice].y <= box1.top + box1.height))?colidiu = true : indice++;
     return colidiu;
     }
 
 }
-
-document.addEventListener('keydown', mover);
