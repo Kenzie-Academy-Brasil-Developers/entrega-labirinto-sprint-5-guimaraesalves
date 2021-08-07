@@ -23,7 +23,7 @@ function mover(){
                 box.style.top = boxTop + "px";
             }
   
-            console.log(detectarColisao("box", "wall")==true) ? console.log("colidiu") : console.log("ainda não colidiu"); 
+            console.log(detectarColisao("box", "wall")==true) //? console.log("colidiu") : console.log("ainda não colidiu");  
   
   
 function detectarColisao(idWall, idBox) {
